@@ -1,0 +1,44 @@
+@layout('accounts/layout')
+
+@section('content')
+<div class="card">
+    <div class="card-body" >
+            <form class="form-material m-t-40" data-controller="account">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="a_name">Account Name</label>
+                            <input 
+                                id="a_name" 
+                                class="form-control form-control-line" 
+                                data-target="account.a_name"
+                                name="a_name"
+                                placeholder="Name"
+                                value="{{ old('a_name','') }}"
+                                type="text" />
+                            <div class="invalid-feedback"></div> 
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="a_website_url">Website URL</label>
+                            <input 
+                                type="text" 
+                                class="form-control form-control-line" 
+                                id="a_website_url" 
+                                data-target="account.a_website_url"
+                                name="a_website_url"
+                                placeholder=""
+                                value="{{old('a_website_url','')}}">
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        <div class="form-actions text-right mt-5 pt-2">
+                            <button type="submit" data-action="account#store" class="btn btn-themecolor"> <i class="fas fa-check"></i> Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+@endsection

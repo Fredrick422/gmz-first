@@ -1,0 +1,35 @@
+<script type="text/javascript">
+    window.addEventListener('DOMContentLoaded', function() {
+        $(function(){
+            $('#{{alert.target}}').on('click', function(event){
+                event.preventDefault();
+                const after = '{{alert.affter}}';
+                const swalWithBootstrapButtons = swal.mixin({
+                    confirmButtonClass: 'btn btn-success btn-lg mx-2',
+                    cancelButtonClass: 'btn btn-danger btn-lg mx-2',
+                    buttonsStyling: false,
+                })
+
+                if(after === 'true'){
+                    swalWithBootstrapButtons({
+                        title: '{{alert.title}}',
+                        text: '{{alert.text}}',
+                        type: '{{alert.type}}',
+                        showCancelButton: '{{alert.showCancelButton}}',
+                        confirmButtonText: '{{alert.confirmButtonText}}',
+                        cancelButtonText: '{{alert.cancelButtonText}}}',
+                        reverseButtons: '{{alert.reverseButtons}}',
+                        showLoaderOnConfirm: '{{alert.showLoaderOnConfirm}}'
+                    }).then((result) => {
+                        if (result.value) {
+                            window.location.replace('{{alert.url}}');
+                        }
+                    })
+
+                    return false;
+
+                }
+            });
+        }); 
+    });   
+</script>

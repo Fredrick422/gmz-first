@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="turbolinks-cache-control" content="no-cache">
+    {{ cspMeta() }}
+    <!-- Favicon icon -->
+     <link rel="icon" type="image/png" sizes="16x16" href="{{ assetsUrl('images/icon.png') }}">
+    <title>Account | Gumzo.io</title>
+    
+    <!-- Core CSS -->
+    {{ css('gumzo') }}
+
+    <script type="text/javascript" src="{{assetsUrl('js/accounts.js')}}" defer></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body class="fix-header card-no-border fix-sidebar">
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <!--<div class="preloader">
+        <div class="loader">
+            <div class="loader__figure"></div>
+            <p class="loader__label">Gumzo.io</p>
+        </div>
+    </div>-->
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper" class="accounts-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        @include('accounts/partials/header.edge')
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        @include('accounts/partials/sidebar.edge')
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+            <!-- ============================================================== -->
+            <!-- Notifications section -->
+            <!-- ============================================================== -->
+            <div class="my-0">
+                @if(Helpers.Account.current.a_validated == false)
+                    <div class="alert alert-info" role="alert">
+                         This account has not been validated. Some fetures will be hidden untill account is validated. <a href="#" data-toggle="modal" data-target="#validateAccountModal">Click here to validate account</a>.
+                    </div>
+                @endif
+                @include('partials.notifications')
+            </div>
+
+            <!-- ============================================================== -->
+            <!-- Title section-->
+            <!-- ============================================================== -->
+            <div class="row page-titles">
+                <div class="col-md-5 align-self-center">
+                    @!section('section_title')
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <div class="col-12">
+                        @!section('content')
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End PAge Content -->
+                <!-- ============================================================== -->
+
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            @include('accounts/partials/footer.edge')
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+
+    <!--======================================================================-->
+    <!--Validate account modal-->
+    <!--======================================================================-->
+    @component('accounts.components.modal', target='validateAccountModal', size='xl', header=false, footer=false)
+            @slot('content')
+                @include('accounts.partials.account.validate')
+            @endslot
+        @endcomponent
+
+    <!--====================================================================-->
+    <!--New account modal-->
+    <!--=====================================================================-->
+     @component('accounts.components.modal', target='newAccountModal', size='md', header=false, footer=false)
+            @slot('content')
+                <form class="mx-5 pd-3 accounts" id="addAcount" data-controller="account">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="a_name">Website Name</label>
+                                <input 
+                                    id="a_name" 
+                                    class="form-control form-control-line" 
+                                    data-target="account.a_name"
+                                    name="a_name"
+                                    placeholder="Name"
+                                    value="{{ old('c_name','') }}"
+                                    type="text" />
+                                <div class="invalid-feedback"></div> 
+                            </div>
+                            <div class="form-group">
+                                <label for="a_website_url">Website URL</label>
+                                <input 
+                                    type="text" 
+                                    class="form-control form-control-line" 
+                                    id="a_website_url" 
+                                    data-target="account.a_website_url"
+                                    name="a_website_url"
+                                    placeholder="https://example.com"
+                                    value="{{old('a_website_url','')}}">
+                                <div class="invalid-feedback"></div>
+                            </div>
+                            <div class="form-actions text-right mt-5 pt-2">
+                                <button type="submit" data-action="account#store" class="btn btn-themecolor"> <i class="fas fa-check"></i> Save</button>
+                            </div>
+                        </div>
+                </div>
+            </form>
+            @endslot
+        @endcomponent
+        <!--===================================================================-->
+        <!--Alers component-->
+        <!--===================================================================-->
+        @!component('accounts.components.alerts', alert= {
+            affter: true,
+            target: 'logout',
+            title: 'Are you sure?',
+            text: 'You want to sign out!',
+            type: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, Sign out!',
+            cancelButtonText: 'No keep me logged in!',
+            reverseButtons: false,
+            showLoaderOnConfirm: false,
+            url: '/logout'
+        })
+        <!--include modals-->
+        @!component('components.modal', target='medium', size='md')
+        @!component('components.modal', target='small', size='sm')
+        @!component('components.modal', target='xlarge', size='xl')
+        @!component('components.modal', target='large', size='lg')
+        @!component('components.modal', target='default', size='at')
+        <!--Importa notifiacations partials-->
+        @include('partials.alert')
+        @include('partials.toast')
+    </body>
+</html>

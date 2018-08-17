@@ -1,0 +1,41 @@
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th class="font-bold">Name</th>
+                <th class="font-bold">Activity</th>
+                <th class="font-bold">Agents</th>
+                <th class="text-nowrap font-bold">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @each(division in divisions)
+                <tr>
+                    <td>{{division.d_name}}</td>
+                    <td>
+                        <div class="progress progress-xs margin-vertical-10 ">
+                            <div class="progress-bar bg-danger" style="width: 35%; height:6px;"></div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="label label-table label-success m-r-10">25</div>
+                    </td>
+                    <td class="text-nowrap">
+                        <span data-controller="modal">
+                            <a href="#" data-toggle="tooltip" data-url="/agents/create/{{division.id}}" data-action="modal#default" data-original-title="Add Agent"> <i class="fas fa-user text-inverse m-r-10"></i> </a>
+                        </span>
+                        <span>
+                            <a href="/agents/{{division.id}}" data-toggle="tooltip" data-original-title="View"> <i class="fas fa-eye text-success m-r-10"></i> </a>
+                        </span>
+                        <span data-controller="modal">
+                            <a href="#" data-toggle="tooltip" data-url="/divisions/{{division.id}}/edit" data-action="modal#default" data-original-title="Edit"> <i class="fas fa-edit text-inverse m-r-10"></i> </a>
+                        </span>
+                        <span data-controller="division">
+                            <a href="#" data-toggle="tooltip" data-url="/divisions/{{division.id}}" data-action="division#destroy" data-original-title="Delete"> <i class="fas fa-trash text-danger m-r-10"></i> </a>
+                        </span>
+                    </td>
+                </tr>
+            @endeach
+        </tbody>
+    </table>
+</div>

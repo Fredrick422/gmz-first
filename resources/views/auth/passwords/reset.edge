@@ -1,0 +1,50 @@
+@layout('auth/layout')
+@section('content')
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="text-center">
+                <a class="brand-icon" href="{{ appurl() }}">
+                    <img class="img-resposive" src="{{ assetsUrl('images/icon.png') }}" alt="gumzo.io logo icon" /> 
+                </a>
+            </div>
+        </div>
+        <div id="authForm" class="col-md-6 offset-md-3">
+            <form method="POST" data-controller="auth">
+                {{ csrfField() }}
+                <input
+                     type="hidden" 
+                     name="c_token" 
+                     data-target="auth.c_token"
+                     value="{{ token }}" >
+                <div class="form-group">
+                    <label for="exampleInputPassword1">New Password</label>
+                    <input 
+                        type="password" 
+                        name="u_password" 
+                        data-target="auth.u_password"
+                        class="form-control form-control-lg {{hasErrorFor('u_password') ? ' is-invalid ' : '  '}}" 
+                        id="u_password" 
+                        placeholder="Password"
+                        value="{{old('u_password', '')}}">
+                    <div class="invalid-feedback"></div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword2">Confirm Password</label>
+                    <input 
+                        type="password" 
+                        name="u_password_confirmation" 
+                        data-target="auth.u_password_confirmation"
+                        class="form-control form-control-lg {{hasErrorFor('u_password_confirmation') ? ' is-invalid ' : '  '}}" 
+                        id="u_password_confirmation" 
+                        placeholder="Confirm Password"
+                        value="{{old('u_password_confirmation', '')}}">
+                    <div class="invalid-feedback"></div>
+                    <div class="valid-feedback"></div>
+                </div>
+                <button type="submit" data-action="auth#reset" class="btn btn-themecolor-alt font-30 btn-block waves-effect waves-light" type="submit"><i class="zmdi zmdi-refresh"></i> Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+@endsection

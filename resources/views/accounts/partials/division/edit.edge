@@ -1,0 +1,29 @@
+ <div class="modal-custom-hd">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true"><i class="zmdi zmdi-close"></i></span>
+    </button>
+</div>
+<div class="modal-body" data-controller="division">
+    <form id="editDivision" class="mx-5 pd-3">
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group">
+                    <input type="hidden" data-target="division.d_id" value="{{ division.id }}"
+                    <label for="d_name">Division Name</label>
+                    <input 
+                        id="d_name" 
+                        class="form-control form-control-line" 
+                        data-target="division.d_name"
+                        name="d_name"
+                        placeholder="Name"
+                        value="{{ division.d_name ? division.d_name : old('d_name','') }}"
+                        type="text" />
+                    <div class="invalid-feedback"></div> 
+                </div>
+                <div class="form-actions text-right mb-3 pt-2">
+                    <button type="submit" data-action="division#update" class="btn btn-themecolor"> <i class="fas fa-check"></i> Save</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

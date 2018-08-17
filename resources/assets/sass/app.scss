@@ -1,0 +1,43 @@
+/*
+Template Name: Admin Pro Admin
+Author: Wrappixel
+Email: niravjoshi87@gmail.com
+File: scss
+*/
+/**
+ * Table Of Content
+ *
+ * 	1. Globals
+ *	2. Headers
+ *	3. Navigations
+ *	4. Banners
+ *	5. Footers
+ *	6. app
+ *	7. Widgets
+ *	8. Custom Templates
+ */
+ 
+@import 'variable'; 
+@import 'custom';
+@import 'public-custom';
+@import 'sidebar';
+@import 'pages/pages'; 
+@import 'pages/public-pages'; 
+@import 'colors/default-dark'; 
+@import 'icons/font-awesome/css/fontawesome-all.css';
+@import 'icons/simple-line-icons/css/simple-line-icons.css';
+@import 'icons/weather-icons/css/weather-icons.min.css';
+@import 'icons/iconmind/iconmind.css';
+@import 'icons/themify-icons/themify-icons.css'; 
+@import 'icons/flag-icon-css/flag-icon.min.css';
+@import "icons/material-design-iconic-font/css/material-design-iconic-font.min.css";
+@import 'widgets/widgets';
+@import 'public-grid';
+@import 'grid';
+@import 'responsive'; 
+@import '../css/spinners.css'; 
+@import '../css/animate.css';
+@import '../css/steps.css';
+@import '../../../node_modules/bootstrap-select/bootstrap-select.min.css';
+@import 'partials/partials';
+   

@@ -1,0 +1,10 @@
+@if(flashMessage('notification'))
+    <div class="alert alert-{{flashMessage('notification.type')}}" role="alert">
+        @if(flashMessage('notification.dismissable'))
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        @endif
+       {{flashMessage('notification.message')}}
+    </div>
+@endif

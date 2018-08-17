@@ -1,0 +1,20 @@
+@if(flashMessage('toast'))
+<script type="text/javascript">
+    window.addEventListener('DOMContentLoaded', function() {
+        $(function(){
+            "use strict";
+            let time = '{{flashMessage("toast.timer") ? flashMessage("toast.timer") : 1000}}';
+            $.toast({
+                heading: '{{flashMessage("toast.heading")}}',
+                text: '{{flashMessage("toast.text")}}',
+                position: 'top-right',
+                loaderBg: '{{flashMessage("toast.color") ? flashMessage("toast.color") : "#FBAF3F" }}',
+                icon: '{{flashMessage("toast.icon")}}',
+                hideAfter: parseInt(time),
+                stack: 6
+            });
+
+        }); 
+    });   
+</script>
+@endif

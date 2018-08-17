@@ -1,0 +1,206 @@
+@layout('accounts/layout')
+
+@section('content')
+<!-- Validation wizard -->
+<div class="row" id="validation">
+    <div class="col-12">
+        <div class="card wizard-content">
+            <div class="card-body">
+                <h2 class="card-title font-bold text-center">Account Setup Wizard</h2>
+                <h4 class="card-subtitle font-bold text-center">Get started in Minutes with this quick account setup wizard</h4>
+                <form action="#" class="account-wizard wizard-circle">
+                    <!-- Step 1 -->
+                    <h6>Company</h6> 
+                    <section action-url="{{ company.id ? '/company/'+company.id : '/company' }}" action-method="{{ company.id ? 'put' : 'post' }}" >
+                        <div class="row">
+                            <div class="col-md-6">
+                                    <input 
+                                    type="hidden"
+                                    class="section_id"
+                                    name="c_id"
+                                    id="c_id"
+                                    value="{{ company.id ? company.id : '' }}" >
+                                <div class="form-group"> 
+                                    <input 
+                                        type="text" 
+                                        class="form-control mt-2" 
+                                        id="c_name" 
+                                        name="c_name"
+                                        placeholder="Company Name"
+                                        value="{{ company.c_name ? company.c_name : old('c_name','') }}">
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input 
+                                        type="text" 
+                                        class="form-control mt-2" 
+                                        id="c_phone" 
+                                        name="c_phone"
+                                        placeholder="Phone Number"
+                                        value="{{ company.c_phone ? company.c_phone : old('c_phone','') }}">
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                   <select 
+                                    class="custom-select form-control mt-2" 
+                                    id="c_country" 
+                                    name="c_country"
+                                    >
+                                        <option value="">Country</option>
+                                        <option {{ company.c_country == 'ke' || old('c_country') == 'ke' ? 'selected="selected"' : '' }} value="ke">Kenya</option>
+                                        <option value="USA">USA</option>
+                                        <option value="Dubai">Dubai</option>
+                                    </select>
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input 
+                                        type="text" 
+                                        class="form-control mt-2" 
+                                        id="c_region" 
+                                        name="c_region"
+                                        placeholder="State"
+                                        value="{{company.c_region ? company.c_region : old('c_region','')}}">
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input 
+                                        type="text" 
+                                        class="form-control mt-2" 
+                                        id="c_city" 
+                                        name="c_city"
+                                        placeholder="City"
+                                        value="{{company.c_city ? company.c_city : old('c_city','')}}">
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                   <input 
+                                        type="text" 
+                                        class="form-control mt-2" 
+                                        id="c_zip" 
+                                        name="c_zip"
+                                        placeholder="Zip Code"
+                                        value="{{company.c_zip ? company.c_zip : old('c_zip','')}}">
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input 
+                                        type="text" 
+                                        class="form-control mt-2" 
+                                        id="c_address" 
+                                        name="c_address"
+                                        placeholder="Address"
+                                        value="{{company.c_address ? company.c_address : old('c_address','')}}">
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- Step 2 -->
+                    <h6>Account</h6>
+                    <section action-url="{{ account.id ? '/account/'+account.id : '/account' }}" action-method="{{ account.id ? 'put' : 'post' }}">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input 
+                                    type="hidden"
+                                    class="section_id"
+                                    name="a_id"
+                                    id="a_id"
+                                    value="{{ account.id ? account.id : '' }}" >
+                                <div class="form-group">
+                                    <input 
+                                        type="text" 
+                                        class="form-control mt-2" 
+                                        id="a_name" 
+                                        name="a_name"
+                                        placeholder="Account Name"
+                                        value="{{account.a_name ? account.a_name : old('a_name','')}}">
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input 
+                                        type="text" 
+                                        class="form-control mt-2" 
+                                        id="a_website_url" 
+                                        name="a_website_url"
+                                        placeholder="Website URL"
+                                        value="{{account.a_website_url ? account.a_website_url : old('a_website_url','')}}">
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- Step 3 -->
+                    <h6>Division</h6>
+                    <section action-url="{{ division.id ? '/divisions/'+division.id : '/divisions' }}" action-method="{{ division.id ? 'put' : 'post' }}">
+                        <div class="row justify-content-md-center">
+                            <div class="col-md-6 col-md-offset-3">
+                                <input 
+                                    type="hidden"
+                                    class="section_id"
+                                    id="d_id"
+                                    name="d_id"
+                                    value="{{ division.id ? division.id : '' }}" >
+                                <div class="form-group">
+                                    <input 
+                                        type="text" 
+                                        class="form-control mt-2" 
+                                        id="d_name" 
+                                        name="d_name"
+                                        placeholder="Department Name"
+                                        value="{{division.d_name ? division.d_name : old('d_name','')}}">
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- Step 4 -->
+                    <h6>Agents</h6>
+                    <section action-url="{{ agent.id ? '/agents/'+agent.id : '/agents' }}" action-method="{{ agent.id ? 'put' : 'post' }}">
+                        <div class="row justify-content-md-center">
+                            <div class="col-md-6 col-md-offset-3">
+                                <input 
+                                    type="hidden"
+                                    class="section_id"
+                                    id="g_id"
+                                    name="g_id"
+                                    value="{{ agent.id ? agent.id : '' }}" >
+                                <div class="form-group">
+                                    <input 
+                                        type="email" 
+                                        class="form-control mt-2" 
+                                        id="a_email" 
+                                        name="a_email"
+                                        placeholder="Agent Email"
+                                        value="{{agent.a_email ? account.a_email : old('a_email','')}}">
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection

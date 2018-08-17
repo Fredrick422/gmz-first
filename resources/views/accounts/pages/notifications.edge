@@ -1,0 +1,35 @@
+@layout('accounts.layout')
+@section('content')
+<!-- Customize account -->
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="mailbox">
+                <ul>
+                    <li>
+                        <div class="message-center">
+                            @each(notification in notifications)
+                                @if(!notification.n_deleted)
+                                   <!-- Message -->
+                                    <span class="message" data-controller="notifications">
+                                        <div class="btn btn-danger btn-circle"><i class="{{notification.type.n_icon}}"></i></div>
+                                        <div id="{{notification.id}}" class="mail-contnet {{notification.n_seen ? ' main-content-unseen ' : ' '}} " data-target="notifications.notification_id">
+                                            <h5>{{notification.message.n_title}}</h5> 
+                                            <span class="mail-desc">{{notification.message.n_message}}</span> 
+                                            <span class="time">9:30 AM</span> 
+                                        </div>
+                                        <div class="btn text-danger" data-action="click->notifications#destroy"><i class="fa fa-trash"></i></div>
+                                    </span>
+                                @endif 
+                            @else
+
+                            @endeach
+                        </div>
+                    </li>
+                    <li><div class="content-loader text-center"><i class="fa-loader fas fa-spinner fa-spin fa-lg"></i></div></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection

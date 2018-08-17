@@ -1,0 +1,98 @@
+/*
+Template Name: Admin pro Admin
+Author: Wrappixel
+Email: niravjoshi87@gmail.com
+File: scss
+*/
+@import '../variable'; 
+
+
+/*******************
+Modal  Page
+******************/
+.modal{
+   .modal-dialog{
+       transition: all .5s linear;
+       -webkit-transition: .5s linear;
+       -moz-transition: .5s linear;
+       -o-transition: .5s linear;
+       &.modal-xl{
+           max-width: 1000px !important;
+       }
+       &.modal-md {
+            max-width: 700px !important;
+       }
+       &.modal-at {
+         max-width: 500px !important;
+       }
+       &.modal-loader{
+           height: 120px;
+           width: 120px;
+       }
+       .modal-content{
+            border:none !important;
+            .modal-form {
+                padding: 1.5rem 2rem;
+            }
+            .modal-header {
+                .close {
+                    opacity: 1 !important;
+                    font-size: 40px;
+                }
+                .modal-header-content {
+                    background-color: $themecolor;
+                    text-align: center;
+                    margin: -1rem;
+                    padding-top: 2.5rem;
+                    padding-bottom: 0;
+                }
+                .modal-title {
+                    color: #ffffff;
+                }
+                .modal-header-text {
+                    color: $white;
+                    padding: 1rem 0px;
+                    opacity: 0.7 !important;
+                }
+            }
+           .modal-custom-hd{
+                padding: 1rem;
+                .close {
+                    float: right;
+                    font-size: 2.5rem;
+                    font-weight: 700;
+                    line-height: 1;
+                    color: #000;
+                    margin: -0.8rem -0.5rem;
+                    background-color: transparent;
+                    text-shadow: 0 1px 0 #fff;
+                    opacity: .5;
+                }
+           }
+           .modal-body{
+               .fa-loader{
+                    line-height: 100px;
+               }
+           }
+           .modal-footer {
+                display: block !important;
+                .modal-footer-content {
+                    background-color: #EAEAEA;
+                    text-align: left;
+                    margin: -1rem;
+                    display: block;
+                    padding: 1rem 3rem;
+                }
+                .modal-title {
+                    color: #ffffff;
+                    text-transform: uppercase;
+                    text-align: center;
+                }
+                .modal-header-text {
+                    color: $greytextcolorlight;
+                    text-align: center;
+                }
+           }
+       }
+   }
+}

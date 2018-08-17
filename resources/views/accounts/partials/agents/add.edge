@@ -1,0 +1,28 @@
+<div class="modal-custom-hd">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true"><i class="zmdi zmdi-close"></i></span>
+    </button>
+</div>
+<div class="modal-body" data-controller="agents">
+    <form id="addAgent" class="mx-5 pd-3">
+        <input type="hidden" data-target="agents.d_id" value="{{divisionid}}" >
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group">
+                    <label for="a_email">Agent Email</label>
+                    <input 
+                        id="a_email" 
+                        class="form-control form-control-line" 
+                        data-target="agents.a_email"
+                        name="a_email"
+                        value="{{ old('a_email','') }}"
+                        type="email" />
+                    <div class="invalid-feedback"></div> 
+                </div>
+                <div class="form-actions text-right mb-3 pt-2">
+                    <button type="submit" data-action="agents#store" class="btn btn-themecolor"> <i class="fas fa-check"></i> Invite</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

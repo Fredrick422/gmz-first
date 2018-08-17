@@ -1,0 +1,35 @@
+<!-- Modal -->
+    <div class="modal" id="{{ target }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-{{ size }}" role="document">
+        <div class="modal-content">
+            @if(header != false)
+                <div class="modal-header">
+                    @yield($slot.title)
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true"><i class="zmdi zmdi-close"></i></span>
+                        </button>
+                    @endyield
+                </div>
+            @else
+                <div class="modal-custom-hd">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="zmdi zmdi-close"></i></span>
+                    </button>
+                </div>
+            @endif
+
+            <div class="modal-body">
+                @yield($slot.content)
+                
+                @endyield
+            </div>
+            @if(footer == true)
+                <div class="modal-footer">
+                    @yield($slot.footer)
+                    
+                    @endyield
+                </div>
+            @endif
+        </div>
+    </div>
+    </div>

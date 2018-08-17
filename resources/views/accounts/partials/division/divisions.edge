@@ -1,0 +1,16 @@
+@if(Helpers.Account.current.a_validated == true)
+    <div class="card" data-controller="division">
+        <input type="hidden" name="accountid" data-target="division.a_id" value="{{Helpers.Account.current.id}}" >
+        <div class="card-body" >
+            <h2 class="card-title">Account Divisions</h2>
+            <h6 class="card-subtitle">Divisions are equivalent to departments in your business, you can add/remove divisions in this section.</h6>
+        </div>
+        
+        <div class="col-12">
+            <div data-target="division.list"></div>
+            <div class="py-3" data-controller="modal">
+                <button type="button" data-url="/divisions/create" data-action="modal#default"  class="btn btn-themecolor btn-block"> <i class="fas fa-plus"></i> Add New Division</button>
+            </div>
+        </div>
+    </div>
+@endif

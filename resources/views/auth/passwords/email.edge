@@ -1,0 +1,25 @@
+@layout('public/layout')
+@section('content')
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <form action="{{route('sendLink')}}" method="POST">
+                {{ csrfField() }}
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input 
+                        type="email" 
+                        name="u_email" 
+                        class="form-control form-control-lg {{hasErrorFor('u_email') ? ' is-invalid ' : '  '}}" 
+                        id="exampleInputEmail1" 
+                        aria-describedby="emailHelp" 
+                        placeholder="Enter email"
+                        value="{{old('u_email', '')}}">
+                    <div class="invalid-feedback">You must agree before submitting.</div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+@endsection

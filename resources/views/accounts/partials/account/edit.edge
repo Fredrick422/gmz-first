@@ -1,0 +1,47 @@
+<div class="card">
+    <div class="card-body" >
+        <h2 class="card-title">Edit Account</h2>
+        <h6 class="card-subtitle">You can add multiple websites by creating multiple accounts.</h6>
+        <form class="form-material m-t-40 accounts"  id="editAccount" data-controller="account">
+            <input 
+                data-target="account.a_id"
+                value="{{Helpers.Account.current.id}}"
+                type="hidden" />
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="a_name">Website Name</label>
+                        <input 
+                            id="a_name" 
+                            type="text"
+                            class="form-control form-control-line" 
+                            data-target="account.a_name"
+                            name="a_name"
+                            placeholder="Website Name"
+                            value="{{ Helpers.Account.current.a_name ? Helpers.Account.current.a_name : old('a_name','') }}" >
+                        <div class="invalid-feedback"></div> 
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="a_website_url">Website Url</label>
+                        <input 
+                            id="a_website_url" 
+                            class="form-control form-control-line" 
+                            name="a_website_url"
+                            data-target="account.a_website_url"
+                            placeholder="http://example.com"
+                            value="{{ Helpers.Account.current.a_website_url ? Helpers.Account.current.a_website_url : old('a_website_url','') }}"
+                            type="text" /> 
+                        <div class="invalid-feedback"></div>
+                    </div>
+                    <div class="form-actions text-right mb-3 pt-2">
+                        <button type="submit" data-action="account#update" class="btn btn-themecolor"> <i class="fas fa-check"></i> Save</button>
+                        <a href="/account/customize" class="btn btn-info"><i class="fas fa-cogs"></i> Customize</a>
+                        <button type="submit" data-action="account#destroy" class="btn btn-danger"> <i class="fas fa-times"></i> Delete</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,72 @@
+@layout('accounts/pages/agents/layout')
+
+@section('content')
+<!-- Column -->
+<div class="row" data-controller="agents">
+    <div class="col-lg-4 col-xlg-3 col-md-5"> 
+        <div class="card">
+            <div class="card-body">
+                <center class="m-t-30"> 
+                    <span class="edit-prf-pic">
+                        <img src="{{profilepic(agent.user_id)}}" class="img-circle"/>
+                        <div>Edit</div>
+                        <input type="file" data-action="agents#profpic"  name="a_profilepic" />
+                    </span>
+                    <h4 class="card-title m-t-10">{{agent.a_username? agent.a_username : ''}}</h4> 
+                    <h6 class="card-subtitle">{{agent.user.u_email}}</h6>
+                </center>
+            </div>
+        </div>
+    </div>
+    <!-- Column -->
+    <!-- Column -->
+    <div class="col-lg-8 col-xlg-9 col-md-7">
+        <div class="card">
+            <div class="card-body">
+                <form id="editAgent" class="form-material m-t-40">
+                    <input 
+                        data-target="agents.g_id"
+                        value="{{agent.id}}"
+                        type="hidden" />
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="a_username">Username</label>
+                                <input 
+                                    id="a_username" 
+                                    class="form-control form-control-line" 
+                                    data-target="agents.a_username"
+                                    name="a_username"
+                                    placeholder="Username"
+                                    value="{{ agent.a_username ? agent.a_username : old('a_username','') }}"
+                                    type="text" />
+                                <div class="invalid-feedback"></div> 
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="a_email">Email</label>
+                                <input 
+                                    id="a_email" 
+                                    class="form-control form-control-line" 
+                                    data-target="agents.a_email"
+                                    name="a_email"
+                                    placeholder="Email"
+                                    value="{{ agent.user.u_email ? agent.user.u_email : old('a_email','') }}"
+                                    type="text" />
+                                <div class="invalid-feedback"></div> 
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-actions text-right mt-5 pt-2">
+                                <button type="submit" data-action="agents#update" class="btn btn-themecolor"> <i class="fas fa-check"></i> Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Column -->
+@endsection

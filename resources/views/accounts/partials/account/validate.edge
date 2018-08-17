@@ -1,0 +1,55 @@
+
+<div class="card">
+    <div class="card-body" >
+        <h2 class="card-title">Account Validation</h2>
+        <h5 class="card-subtitle text-warning">This account will remain inactive untill validation is complete. Follow the steps bellow to validate this account.</h5>
+    </div> 
+</div>        
+<form class="form-material m-t-40" data-controller="account">
+    <input 
+        data-target="account.a_id"
+        value="{{Helpers.Account.current.id}}"
+        type="hidden" />
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body" >
+                        <h5>Your Account validation token:</h5>
+                        <small>Use this validation token to validate your account.</small>
+                        <div class="highlight"><pre><code><span class="nt">{{Helpers.Account.current.a_validation_token}}</span>
+</code></pre></div>
+                <h5>An HTML meta tag should look like this:</h5>
+                <div class="highlight"><pre><code><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"gmz-account-validation"</span><span class="na"> content=</span><span class="s">"{{Helpers.Account.current.a_validation_token}}"</span><span class="nt">&gt;</span></code></pre></div>
+                <h5>An HTML file with a Meta validation token might look like this:</h5>
+                <div class="highlight">
+<pre><code><span class="nt">&lt;head</span>
+<span class="nt">&lt;title</span>> Site Title <<span class="nt">title&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"gmz-account-validation"</span><span class="na"> content=</span><span class="s">"{{Helpers.Account.current.a_validation_token}}"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+</code></pre></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body" >
+                    <p>To validate account you must insert the validation token inform of a HTML &lt;meta&gt; tags within the &lt;head&gt; element at the top level of your main html file.</p>
+                    <h4>Account Validation Steps</h4>
+                    <dl class="list-counter">
+                        <dt>Open your HTML document and create a new <strong>meta</strong> tag within the <strong>head</strong> element</dt>
+                        <dt>Give it a tag name value of <span class="label label-info"> gmz-account-validation</span> and content value of <span class="label label-info"> YOUR TOKEN</span>.</dt>
+                        <dt>Save your file.</dt>
+                        <dt>Click on the <strong>Validate Account</strong> button</dt>
+                    </dl>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body" >
+                    <div class="form-actions text-right mt-5 pt-2">
+                        <button type="submit" data-action="account#validate" class="btn btn-warning"> <i class="fas fa-check"></i> Validate Account</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

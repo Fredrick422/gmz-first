@@ -1,0 +1,38 @@
+@if(flashMessage('alert'))
+<script type="text/javascript">
+    window.addEventListener('DOMContentLoaded', function() {
+        $(function(){
+            "use strict";
+            const swalWithBootstrapButtons = swal.mixin({
+                confirmButtonClass: 'btn btn-success btn-lg mx-2',
+                cancelButtonClass: 'btn btn-danger btn-lg mx-2',
+                buttonsStyling: false,
+            })
+
+            let cancelbtn = '{{flashMessage("alert.showCancelButton")}}',
+                reversebtn = '{{flashMessage("alert.reverseButtons")}}',
+                showloader = '{{flashMessage("alert.showLoaderOnConfirm")}}',
+                confirmbtn = '{{flashMessage("alert.showConfirmButtonText") ? flashMessage("alert.showConfirmButtonText") : ''}}';
+
+            swalWithBootstrapButtons({
+                title: '{{ flashMessage("alert.title") ? flashMessage("alert.title") : ''}}',
+                text: '{{flashMessage("alert.message") ? flashMessage("alert.message") : ''}}',
+                type: '{{flashMessage("alert.type")}}',
+                showConfirmButtonText: (confirmbtn == 'true' || confirmbtn == '' ) ? true : false,
+                confirmButtonText: '{{flashMessage("alert.confirmButtonText") ? flashMessage("alert.confirmButtonText") : ''}}',
+                showCancelButton: (cancelbtn == 'true') ? true : false,
+                cancelButtonText: '{{flashMessage("alert.cancelButtonText") ? flashMessage("alert.cancelButtonText") : ''}}}',
+                reverseButtons: (reversebtn == 'true') ? true : false,
+                showLoaderOnConfirm: (showloader == 'true') ? true : false,
+            }).then((result) => {
+                if (result.value) {
+                    //window.location.replace('{{alert.url}}');
+                }
+            })
+
+            return false;
+
+        }); 
+    });   
+</script>
+@endif

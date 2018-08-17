@@ -1,0 +1,105 @@
+@layout('auth/layout')
+@section('content')
+    <div class="container" >
+        <div class="row justify-content-md-center">
+            <div class="col-md-6">
+                <div class="text-center">
+                        <a class="brand-icon" href="{{ appurl() }}">
+                        <img class="img-resposive" src="{{ assetsUrl('images/icon.png') }}" alt="gumzo.io logo icon" /> 
+                    </a>
+                </div>
+                <div id="authForm" class="login-register pt-0">
+                    <div class="login-box card">
+                        <div class="card-body">
+                            <form class="form-horizontal form-material" id="loginform" data-controller="auth">
+                                <h3 class="box-title m-b-20">Sign In</h3>
+                                {{ csrfField() }}
+                                <div class="form-group ">
+                                    <div class="col-xs-12">
+                                        <input 
+                                            class="form-control {{hasErrorFor('l_email') ? ' is-invalid ' : '  '}}" 
+                                            type="text" 
+                                            id="l_email" 
+                                            data-target="auth.l_email" 
+                                            required="" 
+                                            name="l_email" 
+                                            value="{{old('l_email', '')}}"
+                                            placeholder="Enter Your Email Address">
+                                        <div class="invalid-feedback"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-xs-12">
+                                        <input 
+                                            class="form-control {{hasErrorFor('l_password') ? ' is-invalid ' : '  '}}" 
+                                            type="password" 
+                                            id="l_password" 
+                                            data-target="auth.l_password" 
+                                            required="" 
+                                            name="l_password" 
+                                            placeholder="Enter Password">
+                                        <div class="invalid-feedback"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6">
+                                        <div class="checkbox checkbox-info pull-left p-t-0">
+                                            <input 
+                                                type="checkbox" 
+                                                name="l_remember" 
+                                                data-target="auth.l_remember"
+                                                class="form-check-input filled-in chk-col-light-blue {{hasErrorFor('l_remember') ? ' is-invalid ' : '  '}}"
+                                                id="l_remember"
+                                                value="1"
+                                                {{old('l_remember', '') == "1" ? ' checked="checked" ' : ' '}} >
+                                            <label for="l_remember"> Remember me </label>
+                                            <div class="invalid-feedback"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 text-right">
+                                        <a href="javascript:void(0)" data-action="toreset" class="text-dark"><i class="fas fa-unlock m-r-5"></i> Forgot pwd?</a> 
+                                    </div>
+                                </div>
+                                <div class="form-group text-center">
+                                    <div class="col-xs-12 p-b-20">
+                                        <button class="btn btn-block btn-lg btn-themecolor btn-rounded font-30" data-action="auth#login" type="submit"><i class="zmdi zmdi-sign-in px-3"></i> LogIn</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <form class="form-horizontal" id="recoverform" data-controller="auth">
+                                <div class="form-group ">
+                                    <div class="col-xs-12">
+                                        <h3>Recover Password</h3>
+                                        <p class="text-muted">Enter your Email and instructions will be sent to you! </p>
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <div class="col-xs-12">
+                                        <input 
+                                            class="form-control {{hasErrorFor('r_email') ? ' is-invalid ' : '  '}}" 
+                                            type="email" 
+                                            id="r_email" 
+                                            data-target="auth.r_email" 
+                                            name="r_email" 
+                                            placeholder="Email">
+                                        <div class="invalid-feedback"></div>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <span class="font-bold font-14">
+                                        <a href="javascript:void(0)" data-action="auth#tologin" class="text-dark"><i class="fas fa-hand-point-left m-r-5"></i> Back to Login?</a>
+                                    </span>
+                                </div>
+                                <div class="form-group text-center m-t-20">
+                                    <div class="col-xs-12">
+                                        <button type="submit" data-action="auth#send" class="btn btn-themecolor-alt font-30 btn-block waves-effect waves-light" type="submit"><i class="zmdi zmdi-refresh"></i> Reset</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

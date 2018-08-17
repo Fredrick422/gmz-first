@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    {{ cspMeta() }}
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/icon.png">
+    <title>Gumzo.io</title> 
+    <!-- Core CSS -->
+    {{ css('gumzo') }}   
+    <!-- Core JavaScript -->
+    <script type="text/javascript" src="{{assetsUrl('js/gumzo.js')}}" defer></script>
+</head>
+
+<body class="fix-header">
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
+    </div>
+    @include('public/partials.notifications')
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="public-wrapper" class="gmz-public-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <header class="topheader" id="top">
+            <div class="fix-width">
+                <nav class="navbar navbar-expand-md navbar-light p-l-0">
+                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+                    <!-- Logo will be here -->
+                    <a class="navbar-brand" href="{{ appurl() }}">
+                        <img class="img-resposive" src="/images/logo.png" alt="gumzo logo" /> 
+                    </a>
+                    <!-- This is the navigation menu -->
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav ml-auto stylish-nav">
+                            <li class="nav-item gmz-nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Demos</a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="../main/index.html" target="_blank">Main</a>
+                                    <a class="dropdown-item" href="../mini-sidebar/index.html" target="_blank">MiniSidebar</a>
+                                    <a class="dropdown-item" href="../dark/index.html" target="_blank">Dark</a>
+                                    <a class="dropdown-item" href="../horizontal/index.html" target="_blank">Horizontal</a>
+                                    <a class="dropdown-item" href="../rtl/index.html" target="_blank">RTL</a>
+                                </div>
+                            </li>
+                            <li class="nav-item gmz-nav-item"> <a class="nav-link" href="../Documentation/document.html" target="_blank">Documentation</a> </li>
+                            @loggedIn
+                                <li class="nav-item gmz-user-icon mr-3 ml-4 text-center" ><span type="button"><i class="fa fa-user-circle"></i></span></li>
+                                <li class="nav-item"> <a data-turbolinks="false" href="/logout" class="btn btn-themecolor-outlined btn-rounded btn-md">Logout</a> </li>
+                            @else
+                                <li class="nav-item gmz-user-icon mr-3 ml-4 text-center" data-controller="modal"  ><span type="button" no-radius="true" data-url="/login" data-action="click->modal#medium"><i class="fa fa-user-circle"></i></span></li>
+                                <li class="nav-item" data-controller="modal" > <button type="button" class="btn btn-themecolor-outlined btn-rounded btn-md" data-action="modal#medium" data-url="/register">START NOW</button> </li>
+                            @endloggedIn
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="public-page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                @!section('content')
+                <!-- ============================================================== -->
+                <!-- End Page Content -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- footer -->
+                <!-- ============================================================== -->
+                <a class="bt-top btn btn-circle btn-lg btn-themecolor-alt" href="#top"><i class="ti-arrow-up"></i></a>
+                <footer class="footer row">
+                    <div class="fix-width">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-6"><img src="images/logo-light-icon.png" alt="logo" /> <img src="images/logo-light-text.png" alt="logo" />
+                                <p class="m-t-30">
+                                    <span class="text-white">AdminWrap</span> is premium quality admin dashboard template with flat design. It is fully responsive admin dashboard template built with Bootstrap Framework, HTML5 & CSS3, Media query. </p>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <ul class="footer-link list-icons">
+                                    <li><a href="../main/index.html"><i class="ti-angle-right"></i> Dashboard 1</a></li>
+                                    <li><a href="../main/index2.html"><i class="ti-angle-right"></i> Dashboard 2</a></li>
+                                    <li><a href="../main/index3.html"><i class="ti-angle-right"></i> Dashboard 3</a></li>
+                                    <li><a href="../main/index4.html"><i class="ti-angle-right"></i> Dashboard 4</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <ul class="footer-link list-icons">
+                                    <li><a href="../main/widget-apps.html"><i class="ti-angle-right"></i> Widget Sections</a></li>
+                                    <li><a href="../main/chart-chartist.html"><i class="ti-angle-right"></i> Chart Options</a></li>
+                                    <li><a href="../main/form-layout.html"><i class="ti-angle-right"></i> Lots of Form Layouts</a></li>
+                                    <li><a href="../main/table-data-table.html"><i class="ti-angle-right"></i> Data Table Options</a></li>
+                                    <li><a href="../main/app-calendar.html"><i class="ti-angle-right"></i> Calendar Designs</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <ul class="footer-link list-icons">
+                                    <li><a href="../main/app-email.html"><i class="ti-angle-right"></i> Inbox Layout</a></li>
+                                    <li><a href="../main/pages-treeview.html"><i class="ti-angle-right"></i> Tree View Options</a></li>
+                                    <li><a href="../main/ui-carousel.html"><i class="ti-angle-right"></i> Carousel Slider Option</a></li>
+                                    <li><a href="../main/pages-gallery.html"><i class="ti-angle-right"></i> Gallery Option</a></li>
+                                    <li><a href="../main/starter-kit.html"><i class="ti-angle-right"></i> Starter Pages</a></li>
+                                </ul>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="col-md-12 sub-footer text-center">
+                                <span>© 2017. All Rights Reserved by <a class="text-white link" href="{{ appurl() }}" target="_blank">Gumzo.io</a></span>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                <!-- ============================================================== -->
+                <!-- End footer -->
+                <!-- ============================================================== -->
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!--include modals-->
+    @!component('components.modal', target='medium', size='md')
+    @!component('components.modal', target='small', size='sm')
+    @!component('components.modal', target='xlarge', size='xl')
+    @!component('components.modal', target='large', size='lg')
+    @!component('components.modal', target='default', size='at')
+    <!--Importa notifiacations partials-->
+    @include('partials.alert')
+    @include('partials.toast')
+</body>
+</html>
